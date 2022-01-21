@@ -113,14 +113,11 @@ def create_heatmap_heathrow(id, start_date, end_date, weather_type):
     ax.set_yticklabels(months)
     plt.setp(ax.get_yticklabels(), rotation=0, size=7) 
 
-    the_title = headers[weather_type] #putting the column header into the title
+    the_title = headers[num] #putting the column header into the title
     ax.set_title("Heathrow - {t} {s} and {e}".format(t=the_title, s=start_date, e=end_date))
     ax.set_xlabel('Time Period {s} to {e}'.format(s=start_date, e=end_date))
     ax.set_ylabel('Months')
     
     #generate the image file
     plt.savefig(f"static/{id}.png")
-    #plt.show()
     plt.close()
-
-#create_heatmap_heathrow(888, 1980, 1990, 1)
