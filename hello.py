@@ -23,9 +23,7 @@ def about():
 
 @app.route("/graph_display")
 def graph_display():
-  #unique_identifier = uuid.uuid4()
-  #create_heatmap_heathrow(unique_identifier, 1980, 1990, 1)
-  create_heatmap_heathrow(888, 1980, 1990, 1)
+  unique_identifier = uuid.uuid4()
+  create_heatmap_heathrow(unique_identifier, 1980, 1990, 1)
   #weather_type max, min, frost, rainfall, sunshine - numbered at the moment
-  #<img src="/static/{unique_identifier}.png">
-  return render_template("graph_display.html")
+  return render_template("graph_display.html", template_uuid = unique_identifier)
