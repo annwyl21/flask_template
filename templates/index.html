@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Mum's Home Page</h1>
+  <form action="/" method="post">
+    {{ template_form.hidden_tag() }}
+    {{ template_form.start_date.label }}
+    {{ template_form.start_date() }}
+    
+    {{ template_form.end_date.label }}
+    {{ template_form.end_date() }}
+    
+    {{ template_form.my_submit() }}
+  </form>
   <p></p>
 {% endblock %}
 
-#put the form here
+
 #start date
 #end date
 #information 
-#submit 
+
+#hidden_tag is the other end of the CSRF
+#my_textfield.label is label of the field (from the class bit)
+#my_textfield() is the input field
