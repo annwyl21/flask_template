@@ -3,3 +3,5 @@ matplotlib
 uuid
 numpy
 seaborn
+flask_wtf
+wtforms
