@@ -26,6 +26,11 @@ def create_heatmap_heathrow(id, start_date, end_date, weather_type):
     #import data
     df = pd.read_csv('heathrow_weather_data1.txt', delim_whitespace=True, skiprows=6, header=0, names=headers)
     df['Total sunshine hours'] = df['Total sunshine hours'].str.replace('#','')
+    df["Days of air frost"] = pd.to_numeric(df["Days of air frost"], errors='coerce')
+    df["Total sunshine hours"] = pd.to_numeric(df["Total sunshine hours"], errors='coerce')
+    #print(df.info())
+    #print(df.head())
+    #print(df.isnull().head())
     
     #use user input to generate x-axis
     years=[]
@@ -93,7 +98,7 @@ def create_heatmap_heathrow(id, start_date, end_date, weather_type):
     else:
         fig, ax = plt.subplots()
         if weather_type == 1:
-            sns.heatmap(mean_temp, cmap="seismic", center=10, annot=True)
+            sns.heatmap(mean_temp, cmap="seismic", center=10, annot=True, annot_kws={"size": 2})
         elif weather_type == 2:
             sns.heatmap(mean_temp, cmap="bwr", center=4, annot=True)
         elif weather_type == 3:
@@ -119,5 +124,8 @@ def create_heatmap_heathrow(id, start_date, end_date, weather_type):
     ax.set_ylabel('Months')
     
     #generate the image file
-    plt.savefig(f"static/{id}.png")
+    #plt.savefig(f"static/{id}.png")
+    plt.show()
     plt.close()
+
+create_heatmap_heathrow(888, 2010, 2020, 5)

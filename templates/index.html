@@ -1,23 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Mum's Home Page</h1>
-  <form action="/" method="post">
+  <h1>Graph's using the Heathrow Weather Data</h1>
+  <p>Data Source:</p>
+  <a href="https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/heathrowdata.txt">Met Office: Heathrow Station Data</a>
+  <p></p>
+  <form action="/graph_display" method="post">
     {{ template_form.hidden_tag() }}
+
     {{ template_form.start_date.label }}
     {{ template_form.start_date() }}
     
     {{ template_form.end_date.label }}
     {{ template_form.end_date() }}
+
+    {{ template_form.weather_type.label }}
+    {{ template_form.weather_type() }}
     
     {{ template_form.my_submit() }}
   </form>
-  <p></p>
+  
+  <p>Weather</p>
+  <p>Maximum Daily Temperature = 1</p>
+  <p>Minimum Daily Temperature = 2</p>
+  <p>Number of frost days = 3</p>
+  <p>Rainfall in mm for the month = 4</p>
+  <p>Hours of Sunshine = 5</p>
+  
 {% endblock %}
-
-
-#start date
-#end date
-#information 
 
 #hidden_tag is the other end of the CSRF
 #my_textfield.label is label of the field (from the class bit)
